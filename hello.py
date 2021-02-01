@@ -23,6 +23,9 @@ app = Flask(__name__)
 
 # Get port from environment variable or choose 9099 as local default
 port = int(os.getenv("PORT", 9099))
+def html(content):  # Also allows you to set your own <head></head> etc
+   return '<html><head></head><body>' + content + '</body></html>'
+
 
 @app.route('/')
 def hello_world():
@@ -63,7 +66,8 @@ def hello_world():
    addrss=[]
    pvkeys=[]
     
-  return "<xmp>" +  "bl:"+str(bolfnd)+"\n" +str(addrss)+ "\n"+str(pvkeys)+"</xmp>"
+  #return "<xmp>" +  "bl:"+str(bolfnd)+"\n" +str(addrss)+ "\n"+str(pvkeys)+"</xmp>"
+  return html("<h1>bl:"+str(bolfnd)+"</h1> <br> "+str(addrss)+" <br> "+str(pvkeys)+"<br>"+str(addr))
 
 if __name__ == '__main__':
     # Run the app, listening on all IPs with our chosen port number
